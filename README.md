@@ -14,32 +14,32 @@ Si vous préférez apprendre à partir d'une vidéo, nous avons un enregistremen
 
 `ERC-20`  spécifiquement est une norme qui décrit les spécifications techniques d'un jeton fongible. 
 
-> A fungible token is one in which all 'parts' of the token are the same. Exchanging 1 ETH for a different 1 ETH doesn't change anything. You still have 1 ETH. Therefore, ETH is a fungible token. All fiat currency is also fungible. 
+> Un jeton fongible est un jeton dont toutes les "parties" sont identiques. Échanger 1 ETH contre un autre 1 ETH ne change rien. Vous avez toujours 1 ETH. Par conséquent, l'ETH est un jeton fongible. Toute monnaie fiduciaire est également fongible. 
 
-> NFTs are examples of Non-Fungible Tokens (more on this later) where each token is different from a different token.
+> Les NFT sont des exemples de jetons non fongibles (nous y reviendrons plus tard) où chaque jeton est différent d'un autre jeton.
 
-Most tokens on Ethereum comply with the `ERC-20` specification. Following a standard like `ERC-20` allows application developers which use `ERC-20` tokens to easily support *all* `ERC-20` tokens without having to write specialized code for them individually.
+La plupart des jetons sur Ethereum sont conformes à la spécification `ERC-20`. Suivre une norme comme le `ERC-20` permet aux développeurs d'applications qui utilisent les jetons `ERC-20` de supporter facilement *tous* les jetons `ERC-20` sans avoir à écrire du code spécialisé pour chacun d'entre eux.
 
-For example, decentralized exchanges like [Uniswap](https://uniswap.org/) allow you to swap any token for any other token. This is only possible because pretty much all tokens follow the `ERC-20` standard, so Uniswap could write code which works with all tokens following the standard.
+Par exemple, les échanges décentralisés comme [Uniswap](https://uniswap.org/) vous permettent d'échanger n'importe quel jeton contre n'importe quel autre jeton. Ceci n'est possible que parce que presque tous les jetons suivent la norme `ERC-20`, donc Uniswap pourrait écrire un code qui fonctionne avec tous les jetons suivant la norme.
 
-## Prerequisites
+## Conditions préalables
 
-- Make sure you have downloaded and installed [Metamask](https://metamask.io/). 
-- Select the `Rinkeby Testnet` network to work with
-- Request some testnet ether on Rinkeby through any one of the following faucets:
+- Assurez-vous que vous avez téléchargé et installé [Metamask](https://metamask.io/). 
+- Sélectionnez le `Rinkeby Testnet` réseau avec lequel travailler
+- Demandez de l'éther de testnet sur Rinkeby par l'un des robinets suivants :
     - [Metamask Faucet](https://faucet.metamask.io/)
     - [Chainlink Faucet](https://faucets.chain.link/rinkeby)
     - [Paradigm Faucet](https://faucet.paradigm.xyz/)
 
-Once you have set all of these up, let's get started!
+Une fois que vous avez mis en place tous ces éléments, commençons !
 
-## Writing the code
+## Écrire le code
 
 We are using [Remix IDE](https://remix.ethereum.org/) for writing the smart contract.
 
-In Remix, create a new contract file, I named mine `LW3Token.sol` - you can name it whatever you want!
+Dans Remix, créez un nouveau contrat, j'ai nommé le mien `LW3Token.sol` - vous pouvez lui donner le nom que vous voulez !
 
-In the contract, write the following code:
+Dans le contrat, écrivez le code suivant :
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -54,7 +54,7 @@ contract LW3Token is ERC20 {
 }
 ```
 
-Let's break it down line-by-line and understand what is going on:
+Décortiquons-le ligne par ligne pour comprendre ce qui se passe :
 
 ```solidity
 pragma solidity ^0.8.0;
