@@ -9,10 +9,10 @@ Si vous préférez apprendre à partir d'une vidéo, nous avons un enregistremen
 
 [![Cryptocurrency Tutorial](https://i.imgur.com/RVzkVsZ.png)](https://www.youtube.com/watch?v=5yM5bojHbmQ "Cryptocurrency Tutorial")
 
-## What is ERC-20?
-`ERC` stands for `Ethereum Request for Comment`. Essentially, they are standards that have been approved by the community and are used to convey technical requirements and specifications for certain use cases.
+## Qu'est-ce que l'ERC-20 ?
+`ERC` signifie `Ethereum Request for Comment`. Il s'agit essentiellement de normes qui ont été approuvées par la communauté et qui sont utilisées pour transmettre des exigences et des spécifications techniques pour certains cas d'utilisation.
 
-`ERC-20` specifically is a standard which outlines the technical specification of a fungible token. 
+`ERC-20`  spécifiquement est une norme qui décrit les spécifications techniques d'un jeton fongible. 
 
 > A fungible token is one in which all 'parts' of the token are the same. Exchanging 1 ETH for a different 1 ETH doesn't change anything. You still have 1 ETH. Therefore, ETH is a fungible token. All fiat currency is also fungible. 
 
