@@ -1,11 +1,11 @@
 # Level 8 - Cryptocurrency Tutorial (ERC20)
 
-In this step-by-step tutorial, you will learn how to create and deploy an `ERC-20` token on Ethereum. 
+Dans ce tutoriel étape par étape, vous apprendrez à créer et à déployer un jeton `ERC-20` sur Ethereum. 
 
-We will use [Metamask](https://metamask.io/) and [Remix IDE](https://remix.ethereum.org/) for this tutorial.
+Nous utiliserons [Metamask](https://metamask.io/) et [Remix IDE](https://remix.ethereum.org/) pour ce tutoriel.
 
-## Prefer a Video?
-If you would rather learn from a video, we have a recording available of this tutorial on our YouTube. Watch the video by clicking on the screenshot below, or go ahead and read the tutorial!
+## Vous préférez une vidéo ?
+Si vous préférez apprendre à partir d'une vidéo, nous avons un enregistrement disponible de ce tutoriel sur notre chaîne YouTube. Regardez la vidéo en cliquant sur la capture d'écran ci-dessous, ou lisez le tutoriel !
 
 [![Cryptocurrency Tutorial](https://i.imgur.com/RVzkVsZ.png)](https://www.youtube.com/watch?v=5yM5bojHbmQ "Cryptocurrency Tutorial")
 
