@@ -71,11 +71,11 @@ This line specifies the compiler version of Solidity to be used. `^0.8.0` means 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol";
 ```
 
-This line imports the `ERC-20` token standard from [OpenZeppelin](https://openzeppelin.com/) (OZ). OZ is an Ethereum security company. Among other things, OZ develops reference contracts for popular smart contract standards which are thoroughly tested and secure. Whenever implementing a smart contract which needs to comply with a standard, try to find an OZ reference implementation rather than rewriting the entire standard from scratch.
+Cette ligne importe le standard de jeton `ERC-20` à partir de [OpenZeppelin](https://openzeppelin.com/) (OZ). OZ est une société de sécurité Ethereum. Entre autres choses, OZ développe des contrats de référence pour les normes populaires de contrats intelligents qui sont testés en profondeur et sécurisés. Lorsque vous mettez en œuvre un contrat intelligent qui doit être conforme à une norme, essayez de trouver une implémentation de référence d'OZ plutôt que de réécrire toute la norme à partir de zéro.
 
-You can look at the implementation of `ERC-20` standard contract if you want by following the link - [https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol)
+Vous pouvez regarder l'implémentation du contrat standard `ERC-20` si vous le souhaitez en suivant ce lien - [https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol)
 
-> Note: In the Sophomore track, we will take a deeper dive into the ERC-20 standard contract to understand everything that is going on within that contract.
+> Note : Dans le cadre du cursus Sophomore, nous allons plonger plus profondément dans le contrat standard ERC-20 afin de comprendre tout ce qui se passe dans ce contrat.
 
 ---
 
@@ -85,11 +85,11 @@ contract LW3Token is ERC20 {
 }
 ```
 
-This specifies a new contract, named LW3Token, in our Solidity file. Also, it says that this contract `is` an instance of `ERC20`. `ERC20` in this case refers to the standard contract we imported from OpenZeppelin. 
+Ceci spécifie un nouveau contrat, nommé LW3Token, dans notre fichier Solidity. Elle indique également que ce contrat `est` une instance de `ERC20`. Dans ce cas, `ERC20` fait référence au contrat standard que nous avons importé d'OpenZeppelin. 
 
-Essentially, we are extending the `ERC20` standard contract we imported from OpenZeppelin. So all the functions and logic that is built into `ERC20` is available for us to use, and we can add our own custom logic on top of it. 
+Essentiellement, nous étendons le contrat standard `ERC20` que nous avons importé d'OpenZeppelin. Ainsi, toutes les fonctions et la logique qui sont intégrées dans `ERC20` sont disponibles pour nous, et nous pouvons ajouter notre propre logique personnalisée par-dessus. 
 
-If you are familiar with Object Oriented Programming principles, you can think of this as a class extending another class.
+Si vous êtes familier avec les principes de la programmation orientée objet, vous pouvez voir cela comme une classe étendant une autre classe.
 
 
 ---
@@ -100,15 +100,15 @@ constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) {
 }
 ```
 
-This bit has slightly weird syntax that you might not have seen before. `Kotlin` actually has some similar syntax, but I digress.
+Cette partie a une syntaxe légèrement bizarre que vous n'avez peut-être jamais vue auparavant. En fait, `Kotlin` a une syntaxe similaire, mais je m'égare.
 
-Essentially, we created `constructor` function that is called when the smart contract is first deployed. Within the constructor, we want two arguments from the user - `_name` and `_symbol` which specify the name and symbol of our cryptocurrency. E.g. name = Ethereum, symbol = ETH.
+Essentiellement, nous avons créé la fonction `constructor` qui est appelée lorsque le contrat intelligent est déployé pour la première fois. Dans le constructor, nous voulons deux arguments de l'utilisateur - `_name` et `_symbol` qui spécifient le nom et le symbole de notre crypto-monnaie. Par exemple, nom = Ethereum, symbole = ETH.
 
-What happens after it is more interesting. Immediately after specifying the constructor function, we call `ERC20(_name, _symbol)`.
+Ce qui se passe ensuite est plus intéressant. Immédiatement après avoir spécifié la fonction constructeur, nous appelons `ERC20(_name, _symbol)`.
 
-The `ERC20` contract we imported from OpenZeppelin has its own constructor, which requires the `name` and `symbol` parameters. Since we are extending the ERC20 contract, we need to initialize the ERC20 contract when we deploy ours. So, as part of our constructor, we also need to call the constructor on the `ERC20` contract.
+Le contrat `ERC20` que nous avons importé d'OpenZeppelin a son propre constructor, qui nécessite les paramètres `name` et `symbol`. Puisque nous étendons le contrat ERC20, nous devons initialiser le contrat ERC20 lorsque nous déployons le nôtre. Ainsi, dans le cadre de notre constructor, nous devons également appeler le constructor du contrat `ERC20`.
 
-Therefore, we are providing `_name` and `_symbol` variables to our contract, which we immediately pass on to the `ERC20` constructor, thereby initializing the `ERC20` smart contract.
+Nous fournissons donc les variables `_name` et `_symbol` à notre contrat, que nous transmettons immédiatement au constructeur `ERC20`, initialisant ainsi le contrat intelligent `ERC20`.
 
 
 ---
