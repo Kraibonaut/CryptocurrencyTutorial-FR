@@ -35,7 +35,7 @@ Une fois que vous avez mis en place tous ces éléments, commençons !
 
 ## Écrire le code
 
-We are using [Remix IDE](https://remix.ethereum.org/) for writing the smart contract.
+Nous utilisons [Remix IDE](https://remix.ethereum.org/) pour écrire le contrat intelligent.
 
 Dans Remix, créez un nouveau contrat, j'ai nommé le mien `LW3Token.sol` - vous pouvez lui donner le nom que vous voulez !
 
@@ -60,7 +60,7 @@ Décortiquons-le ligne par ligne pour comprendre ce qui se passe :
 pragma solidity ^0.8.0;
 ```
 
-This line specifies the compiler version of Solidity to be used. `^0.8.0` means any version greater than `0.8.0`. Usually, you would want to use the latest Solidity compiler version, as a new version usually implies either new features or optimizations.
+Cette ligne spécifie la version du compilateur de Solidity à utiliser. `^0.8.0` signifie toute version supérieure à `0.8.0`. Habituellement, vous voudrez utiliser la dernière version du compilateur Solidity, car une nouvelle version implique généralement de nouvelles fonctionnalités ou des optimisations.
 
 
 
@@ -117,79 +117,79 @@ Nous fournissons donc les variables `_name` et `_symbol` à notre contrat, que n
 _mint(msg.sender, 10 * 10 ** 18);
 ```
 
-`_mint` is an `internal` function within the `ERC20` standard contract, which means that it can only be called by the contract itself. External users cannot call this function. 
+`_mint` est une fonction `interne` du contrat standard `ERC20`, ce qui signifie qu'elle ne peut être appelée que par le contrat lui-même. Les utilisateurs externes ne peuvent pas appeler cette fonction.
 
-Since you as the developer want to receive some tokens when you deploy this contract, we call the `_mint` function to mint some tokens to `msg.sender`.
+Puisque vous, en tant que développeur, voulez recevoir des jetons lorsque vous déployez ce contrat, nous appelons la fonction `_mint` pour monnayer des jetons à `msg.sender`.
 
-`_mint` takes two arguments - an address to mint to, and the amount of tokens to mint
+`_mint` prend deux arguments - une adresse vers laquelle frapper, et la quantité de jetons à frapper.
 
-`msg.sender` is a global variable injected by the Ethereum Virtual Machine, which is the address which made this transaction. Since you will be the one deploying this contract, your address will be there in `msg.sender`. 
+`msg.sender` est une variable globale injectée par la machine virtuelle d'Ethereum, qui est l'adresse qui a fait cette transaction. Puisque vous serez celui qui déploie ce contrat, votre adresse sera là dans `msg.sender`.
 
-`10 * 10 ** 18` specifies that you want 10 full tokens to be minted to your address.
+`10 * 10 ** 18` indique que vous voulez que 10 jetons complets soient frappés à votre adresse.
 
 
 ---
 
-> Note: You might be wondering why we did not just write `10` in the amount, instead of `10 ** 18` (which is actually 10 ^ 18).
+> Note : Vous vous demandez peut-être pourquoi nous n'avons pas simplement écrit " 10 " dans le montant, au lieu de " 10 ** 18 " (qui est en fait 10 ^ 18).
 
-Essentially, Solidity does not support floating point numbers - that is decimals. Also, since ERC20 tokens deal with money, using floating point numbers is a bad idea.
+Essentiellement, Solidity ne prend pas en charge les nombres à virgule flottante - c'est-à-dire les décimales. De plus, comme les jetons ERC20 traitent de l'argent, l'utilisation de nombres à virgule flottante est une mauvaise idée.
 
-As an example, consider the simple calculation `(1/3) * 3` in a language that supports floating point numbers. What do you think this returns? 
+A titre d'exemple, considérez le calcul simple `(1/3) * 3` dans un langage qui supporte les nombres à virgule flottante. A votre avis, qu'est-ce que cela donne ?
 
-If you thought it would return 1, you are wrong.
+Si vous pensiez qu'il retournerait 1, vous avez tort.
 
-Due to inaccuracies in floating point calculations, since computers cannot represent an infinite number of digits, `(1/3) * 3` actually yields something like `0.999999999`.
+En raison des imprécisions des calculs en virgule flottante, les ordinateurs ne pouvant pas représenter un nombre infini de chiffres, " (1/3) * 3 " donne en fait quelque chose comme " 0,999999999 ".
 
-As such, when representing financial currencies, decimals are not used due to calculation errors. As an alternative, we represent every currency as an amount relative to the smallest indivisible part of that currency. For example, $1 is represented as 100 cents, since you can't get smaller than 1 cent when dealing with USD. In that numbering system, 1 cent is just 1, not 0.01. $0.33 is represented as 33, not (1/3). 
+Ainsi, lors de la représentation des monnaies financières, les décimales ne sont pas utilisées en raison des erreurs de calcul. Comme alternative, nous représentons chaque devise comme un montant relatif à la plus petite partie indivisible de cette devise. Par exemple, 1 dollar est représenté par 100 cents, car il est impossible de descendre en dessous de 1 cent lorsqu'il s'agit de dollars américains. Dans ce système de numération, 1 cent est simplement 1, et non 0,01. 0,33 $ est représenté par 33, et non par (1/3).
 
-`ERC20` tokens by default work with 18 decimal places. So 1 full `LW3Token` in this case, is actually represented as `10 ^ 18`. Therefore, to get 10 full `LW3Tokens`, we use `10 * 10 ** 18`.
+Les jetons `ERC20` fonctionnent par défaut avec 18 décimales. Ainsi, 1 `LW3Token` complet dans ce cas, est en fait représenté par `10 ^ 18`. Donc, pour obtenir 10 `LW3Tokens` complets, on utilise `10 * 10 ** 18`.
 
 
 ---
 
 ## Compiling
 
-Compile your contract by either pressing Save (CTRL + S on Windows, Command + S on Mac), or by going over to the `Compiler` tab in Remix, selecting `LW3Token.sol`, and hitting `Compile`.
+Compilez votre contrat en appuyant soit sur Enregistrer (CTRL + S on Windows, Command + S on Mac), ou en allant sur l'onglet `Compiler` dans Remix, en sélectionnant `LW3Token.sol`, et en appuyant sur `Compile`.
 
 ![](https://i.imgur.com/grMZBw5.png)
 
-## Deploying
+## Déploiement 
 
-Head over to the `Deployer` tab in Remix.
+Allez sur l'onglet "Déployer" dans Remix..
 
-Select the `Injected Web3` environment (ensure you are on the Rinkeby Test Network), and connect your Metamask wallet.
+Sélectionnez l'environnement `Injected Web3` (assurez-vous d'être sur le Rinkeby Test Network), et connectez votre porte-monnaie Metamask.
 
-Select the `LW3Token.sol` contract, and enter values for the constructor arguments `_name` and `_symbol`.
+Sélectionnez le contrat `LW3Token.sol`, et entrez les valeurs pour les arguments du constructeur `_name` et `_symbol`.
 
 ![](https://i.imgur.com/HvWLfZq.png)
 
-Click `Transact` and approve the transaction from Metamask to deploy your contract!
+Cliquez sur "Transact" et approuvez la transaction de Metamask pour déployer votre contrat !
 
 ![](https://i.imgur.com/rvBbYl4.png)
 
-When deployed, the contract should show up under the `Deployed Contracts` section. Click the `Copy Address` button to copy the contract address.
+Une fois déployé, le contrat doit apparaître dans la section "Deployed Contracts". Cliquez sur le bouton "Copier l'adresse" pour copier l'adresse du contrat.
 
 ![](https://i.imgur.com/19haj2L.png)
 
-Go to [Rinkeby Etherscan](https://rinkeby.etherscan.io/) and search for your contract address and you should see it there!
+Aller à [Rinkeby Etherscan](https://rinkeby.etherscan.io/) et recherchez l'adresse de votre contrat et vous devriez le voir !
 
-Take a screenshot of it and share it on Discord to show off your newly created token :D
+Faites une capture d'écran et partagez-la sur Discord pour montrer votre jeton nouvellement créé :D
 
-## Viewing Tokens in Metamask
-You may notice that even though you minted tokens to your address, they don't show up in Metamask.
+## Visualisation des jetons dans Metamask
+Vous pouvez remarquer que même si vous avez frappé des jetons à votre adresse, ils n'apparaissent pas dans Metamask.
 
-This is because Metamask cannot detect random ERC20 token balances (since there are literally hundreds of thousands of them). They have a list of the most well known ERC20 tokens that they can show automatically, but apart from that, for your own tokens, you will usually need to tell Metamask to add it to your wallet manually.
+Cela est dû au fait que Metamask ne peut pas détecter les soldes aléatoires des jetons ERC20 (puisqu'il en existe littéralement des centaines de milliers). Ils ont une liste des jetons ERC20 les plus connus qu'ils peuvent afficher automatiquement, mais à part cela, pour vos propres jetons, vous devrez généralement demander à Metamask de les ajouter à votre portefeuille manuellement.
 
-To do so:
-- Copy your contract address
-- Open Metamask and click `Import Tokens` in the `Assets` tab
+Pour ce faire:
+- Copie de l'adresse de votre contrat
+- Ouvrez Metamask et cliquez sur "Import Tokens" dans l'onglet "Assets".
 - ![](https://i.imgur.com/XxKFtU0.png)
-- Enter your Token Contract Address, and it should detect the name and number of decimals automatically
-- Click Add, and you will see your balance in Metamask!
+- Entrez l'adresse de votre contrat de jeton, et il devrait détecter automatiquement le nom et le nombre de décimales.
+- Cliquez sur Ajouter, et vous verrez votre solde dans Metamask !
 - ![](https://i.imgur.com/Wwxe0kg.png)
 
 Share a screenshot in the Discord!
 
 ---
 
-Congratulations! You've successfully deployed and minted your own ERC20 token! Onwards and upwards from here!
+Félicitations ! Vous avez réussi à déployer et à frapper votre propre jeton ERC20 ! En avant et vers le haut à partir de maintenant !
